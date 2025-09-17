@@ -12,13 +12,13 @@ import java.text.SimpleDateFormat
 
 task createWrapper(type: Wrapper) {
   description = "Create a gradle wrapper for you project"
-  gradleVersion = '4.10.1'
+  gradleVersion = '8.5'
 }
 
 tasks.withType(GroovyCompile) {
   configure(groovyOptions.forkOptions) {
     memoryMaximumSize = '1g'
-    jvmArgs = ['-XX:MaxMetaspaceSize=512m', '-Xms512m', '-Xmx1g'] //For Java8
+    jvmArgs = ['-XX:MaxMetaspaceSize=512m', '-Xms512m', '-Xmx1g'] //Updated for Java 21
   }
 }
 

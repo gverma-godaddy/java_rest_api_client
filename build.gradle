@@ -1,6 +1,10 @@
 // Customize this file for your project as needed
 /////////////////////////////////////////////////
 
+plugins {
+    id 'com.github.spotbugs' version '6.0.6'
+}
+
 // If you want to specify a version, do so here otherwise
 // one will be picked from either environment variable 'VERSION' or default to '0.0.0'
 // The version will then be appended with a build id that corresponds to the git revision commit timestamp
@@ -10,6 +14,12 @@ allprojects {
 
 // apply the common ultra gradle tasks to setup artifact repos, etc.
 apply from: file('gradle/ultra.gradle')
+
+// Java 21 compatibility
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
 
 // Add dependencies below..
 // For help with gradle, consult: http://www.gradle.org/docs/current/userguide/userguide_single.html
@@ -22,34 +32,34 @@ ext.jacksonVer = '2.6.0'
 ///////////////
 allprojects {
     dependencies {
-        testCompile 'junit:junit:4.+'
-        testCompile 'org.mockito:mockito-all:[1.8.5,)'
+        testImplementation 'junit:junit:4.+'
+        testImplementation 'org.mockito:mockito-all:[1.8.5,)'
 
         // logging
-        compile "org.slf4j:slf4j-api:$slf4jVer"
-        compile "org.slf4j:slf4j-ext:$slf4jVer"
-        compile "org.slf4j:jcl-over-slf4j:$slf4jVer"
-        compile "org.slf4j:jul-to-slf4j:$slf4jVer"
-        compile "org.slf4j:log4j-over-slf4j:$slf4jVer"
+        implementation "org.slf4j:slf4j-api:$slf4jVer"
+        implementation "org.slf4j:slf4j-ext:$slf4jVer"
+        implementation "org.slf4j:jcl-over-slf4j:$slf4jVer"
+        implementation "org.slf4j:jul-to-slf4j:$slf4jVer"
+        implementation "org.slf4j:log4j-over-slf4j:$slf4jVer"
 
-        compile "ch.qos.logback:logback-core:$logbackVer"
-        compile "ch.qos.logback:logback-classic:$logbackVer"
+        implementation "ch.qos.logback:logback-core:$logbackVer"
+        implementation "ch.qos.logback:logback-classic:$logbackVer"
 
-        compile 'com.google.guava:guava:18.0'
-        compile 'org.apache.httpcomponents:httpclient:4.3.1'
-        compile "com.fasterxml.jackson.core:jackson-core:$jacksonVer"
-        compile "com.fasterxml.jackson.core:jackson-annotations:$jacksonVer"
-        compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVer"
+        implementation 'com.google.guava:guava:18.0'
+        implementation 'org.apache.httpcomponents:httpclient:4.3.1'
+        implementation "com.fasterxml.jackson.core:jackson-core:$jacksonVer"
+        implementation "com.fasterxml.jackson.core:jackson-annotations:$jacksonVer"
+        implementation "com.fasterxml.jackson.core:jackson-databind:$jacksonVer"
 
 
-        compile 'com.sun.jersey:jersey-client:1.17.1'
-        compile 'javax.ws.rs:jsr311-api:1.1.1'
-        compile 'com.sun.jersey:jersey-core:1.17.1'
-        compile "com.sun.jersey.contribs:jersey-multipart:1.17.1"
-        compile "com.sun.jersey.contribs:jersey-apache-client:1.17.1"
+        implementation 'com.sun.jersey:jersey-client:1.17.1'
+        implementation 'javax.ws.rs:jsr311-api:1.1.1'
+        implementation 'com.sun.jersey:jersey-core:1.17.1'
+        implementation "com.sun.jersey.contribs:jersey-multipart:1.17.1"
+        implementation "com.sun.jersey.contribs:jersey-apache-client:1.17.1"
 
-        compile "org.skyscreamer:jsonassert:1.2.1"
-        compile "javax.validation:validation-api:1.1.0.Final"
+        implementation "org.skyscreamer:jsonassert:1.2.1"
+        implementation "javax.validation:validation-api:1.1.0.Final"
     }
 }
 
