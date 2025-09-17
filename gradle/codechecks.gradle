@@ -22,7 +22,7 @@ checkstyle {
 gradle.startParameter.excludedTaskNames += ["checkstyleTest", "spotbugsTest", "pmdTest"]
 
 pmd {
-    toolVersion = '5.4.1'
+    toolVersion = '6.55.0'
     ruleSetFiles = rootProject.files('gradle/config/pmd.xml')
 }
 

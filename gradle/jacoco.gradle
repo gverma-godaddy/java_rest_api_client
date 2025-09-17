@@ -9,7 +9,7 @@
 
 apply plugin: 'java'
 
-def jacocoVersion = '0.7.5+'
+def jacocoVersion = '0.8.11'
 def jacocoAgent = "org.jacoco.agent-${jacocoVersion}.jar"
 
 configurations { jacoco } 
