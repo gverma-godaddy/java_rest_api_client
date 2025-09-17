@@ -12,6 +12,12 @@ apply plugin: 'pmd'
 apply plugin: 'checkstyle'  
 apply from: rootProject.file('gradle/jacoco.gradle')
 
+// Configure SpotBugs to ignore EI violations (expose internal representation)
+spotbugs {
+    ignoreFailures = false
+    excludeFilter = rootProject.file('gradle/config/spotbugs-exclude.xml')
+}
+
 
 checkstyle {
     ignoreFailures = false
