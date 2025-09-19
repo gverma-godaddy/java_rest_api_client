@@ -3,6 +3,7 @@
 
 plugins {
     id 'com.github.spotbugs' version '6.0.6'
+    id 'maven-publish'
 }
 
 // If you want to specify a version, do so here otherwise
@@ -65,4 +66,32 @@ allprojects {
 
 test {
     systemProperties = System.getProperties()
+}
+
+// Publishing configuration
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+            
+            // Optional: customize the published artifact
+            groupId = 'com.ultradns'
+            artifactId = 'java_rest_api_client'
+            version = project.version
+            
+            pom {
+                name = 'UltraDNS Java REST API Client'
+                description = 'Java client library for UltraDNS REST API'
+                url = 'https://github.com/ultradns/java_rest_api_client'
+                
+                developers {
+                    developer {
+                        id = 'ultradns'
+                        name = 'UltraDNS Team'
+                        organization = 'Vercara, LLC.'
+                    }
+                }
+            }
+        }
+    }
 }
